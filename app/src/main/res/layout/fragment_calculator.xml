@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/fragment_calculator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010"
+
+    tools:context=".calculator.view.CalculatorFragment">
+
+    <Button
+        android:id="@+id/number_zero"
+        style="@style/calc_button"
+        android:layout_width="206dp"
+
+        android:text="@string/Button_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/coma"
+        style="@style/calc_button"
+
+        android:layout_alignParentBottom="true"
+        android:text="@string/coma"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/equal"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toEndOf="@+id/number_zero" />
+
+    <Button
+        android:id="@+id/equal"
+        style="@style/action_button_blue"
+        android:layout_height="120dp"
+
+        android:text="@string/Button_equal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/number_one"
+        style="@style/calc_button"
+        android:text="@string/Button_one"
+        app:layout_constraintBottom_toTopOf="@+id/number_zero"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/number_two"
+        style="@style/calc_button"
+        android:layout_above="@+id/number_zero"
+        android:text="@string/Button_two"
+        app:layout_constraintBottom_toTopOf="@+id/number_zero"
+        app:layout_constraintStart_toEndOf="@+id/number_one" />
+
+    <Button
+        android:id="@+id/number_three"
+        style="@style/calc_button"
+
+        android:text="@string/Button_three"
+        app:layout_constraintBottom_toTopOf="@+id/coma"
+        app:layout_constraintEnd_toStartOf="@+id/equal"
+        app:layout_constraintStart_toEndOf="@+id/number_two" />
+
+    <Button
+        android:id="@+id/number_four"
+        style="@style/calc_button"
+        android:text="@string/Button_four"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_one"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/number_five"
+        style="@style/calc_button"
+        android:text="@string/Button_five"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_two"
+        app:layout_constraintStart_toEndOf="@+id/number_four" />
+
+
+    <Button
+        android:id="@+id/number_six"
+        style="@style/calc_button"
+        android:text="@string/Button_six"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_three"
+        app:layout_constraintEnd_toStartOf="@+id/actionPlus"
+        app:layout_constraintStart_toEndOf="@+id/number_five" />
+
+    <Button
+        android:id="@+id/number_seven"
+        style="@style/calc_button"
+        android:text="@string/Button_seven"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_four"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/number_eight"
+        style="@style/calc_button"
+        android:text="@string/Button_eight"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_five"
+        app:layout_constraintStart_toEndOf="@+id/number_seven" />
+
+    <Button
+        android:id="@+id/number_nine"
+        style="@style/calc_button"
+        android:text="@string/Button_nine"
+        app:layout_constraintBottom_toTopOf="@+id/number_six"
+        app:layout_constraintEnd_toStartOf="@+id/actionMinus"
+        app:layout_constraintStart_toEndOf="@+id/number_eight" />
+
+    <Button
+        android:id="@+id/action_per_cent"
+        style="@style/action_button"
+        android:text="@string/Button_percent"
+        app:layout_constraintBottom_toTopOf="@+id/number_seven"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/action_sin"
+        style="@style/action_button"
+        android:text="@string/sin"
+        android:textSize="14sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_eight"
+        app:layout_constraintStart_toEndOf="@+id/action_per_cent" />
+
+    <Button
+        android:id="@+id/action_cos"
+        style="@style/action_button"
+        android:text="@string/cos"
+        android:textSize="14sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/number_nine"
+        app:layout_constraintEnd_toStartOf="@+id/actionMultiplication"
+        app:layout_constraintStart_toEndOf="@+id/action_sin" />
+
+    <Button
+        android:id="@+id/actionPlus"
+        style="@style/action_button_blue"
+        android:text="@string/Button_plus"
+
+        app:layout_constraintBottom_toTopOf="@+id/equal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/actionMinus"
+        style="@style/action_button_blue"
+        android:text="@string/Button_minus"
+
+        app:layout_constraintBottom_toTopOf="@+id/actionPlus"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/actionMultiplication"
+        style="@style/action_button_blue"
+
+        android:text="@string/Button_multiplication"
+        app:layout_constraintBottom_toTopOf="@+id/actionMinus"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/actionDivision"
+        style="@style/action_button_blue"
+
+        android:text="@string/Button_division"
+        app:layout_constraintBottom_toTopOf="@+id/actionMultiplication"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/delete_one"
+        style="@style/action_button"
+        android:layout_marginStart="101dp"
+
+        android:contentDescription="@string/error"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/action_sin"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/back_calculator"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#eeeee4"
+        android:text="@string/Button_back"
+        android:textColor="#262626"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/delete_all"
+        style="@style/action_button"
+        android:text="@string/Button_delete_all"
+
+        app:layout_constraintBottom_toTopOf="@+id/action_cos"
+        app:layout_constraintEnd_toStartOf="@+id/actionDivision"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/delete_one" />
+
+    <TextView
+        android:id="@+id/paradigm"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/Button_back"
+        android:gravity="bottom|right"
+
+        android:textColor="@color/blue"
+        android:textIsSelectable="true"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SCROLLER_ID"
+        tools:ignore="RtlHardcoded" />
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="200dp"
+        android:layout_height="190dp"
+        android:layout_marginEnd="40dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ExtraText">
+
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/Button_back"
+            android:gravity="bottom|right"
+            android:textColor="@color/gray"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

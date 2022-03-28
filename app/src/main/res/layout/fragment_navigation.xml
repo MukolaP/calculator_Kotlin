@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="NavigationFragment"
+    android:orientation="vertical"
+    android:id="@+id/fragmnetNavigation"
+    >
+
+    <Button
+        android:id="@+id/navigateCalculator"
+        style="@style/navigation_button"
+        android:layout_gravity="center"
+        android:text="@string/Button_calculator" />
+</LinearLayout>
