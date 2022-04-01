@@ -6,9 +6,9 @@ import android.widget.ImageButton
 import android.widget.ScrollView
 import android.widget.TextView
 
-class MethodsOutput : Controller() {
+class MethodsOutput : SecondaryMethods(), OutputInterface {
 
-    fun numPressed(button: Button, text: TextView, number: String): Unit =
+    override fun numPressed(button: Button, text: TextView, number: String): Unit =
         button.setOnClickListener {
             when {
                 number != "0" -> editText(number, text)
@@ -17,15 +17,15 @@ class MethodsOutput : Controller() {
             }
         }
 
-    fun actionPressed(button: Button, text: TextView, string: String): Unit =
+    override fun actionPressed(button: Button, text: TextView, string: String): Unit =
         button.setOnClickListener {
-            if (string.isNotEmpty() && action.isEmpty()) {
+            if (actionAudit()) {
                 editText(string, text)
                 action = string
             }
         }
 
-    fun deleteAll(button: Button, text: TextView) {
+    override fun deleteAll(button: Button, text: TextView) {
         button.setOnClickListener {
             string = ""
             text.text = ""
@@ -33,14 +33,14 @@ class MethodsOutput : Controller() {
         }
     }
 
-    fun deleteOne(button: ImageButton, text: TextView): Unit = button.setOnClickListener {
+    override fun deleteOne(button: ImageButton, text: TextView): Unit = button.setOnClickListener {
         if (string.isNotEmpty()) {
             string = string.dropLast(1)
             text.text = string
         }
     }
 
-    fun equal(button: Button, text: TextView, history: TextView, scrollView: ScrollView):
+    override fun equal(button: Button, text: TextView, history: TextView, scrollView: ScrollView):
             Unit = button.setOnClickListener {
         if (equalAudit()) {
             addTextView(string, history)
@@ -51,15 +51,16 @@ class MethodsOutput : Controller() {
         }
     }
 
-    fun coma(button: Button, text: TextView): Unit = button.setOnClickListener {
+    override fun coma(button: Button, text: TextView): Unit = button.setOnClickListener {
         if (string.isNotEmpty())
             editText(",", text)
     }
 
-    fun sinCos(button: Button, text: TextView, string: String): Unit = button.setOnClickListener {
-        if (string.isEmpty()) {
-            editText(string, text)
-            action = string
+    override fun sinCos(button: Button, text: TextView, string: String):
+            Unit = button.setOnClickListener {
+                if (this.string.isEmpty()) {
+                editText(string, text)
+                action = string
         }
     }
 }
