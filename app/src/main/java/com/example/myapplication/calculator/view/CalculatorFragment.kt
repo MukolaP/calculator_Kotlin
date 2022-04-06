@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.BaseFragment
-import com.example.myapplication.calculator.presenter.MethodsOutput
+import com.example.myapplication.calculator.presenter.DataOutput
+import com.example.myapplication.calculator.presenter.save_text.SaveText
 import com.example.myapplication.databinding.FragmentCalculatorBinding
 
 
 class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>() {
-    private val methodsOutput = MethodsOutput()
+    private val dataOutput = DataOutput()
+    private val saveText: SaveText = SaveText.Base()
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -26,33 +28,44 @@ class CalculatorFragment : BaseFragment<FragmentCalculatorBinding>() {
 
         binding.paradigm.setMovementMethod(ScrollingMovementMethod())
 
-        with(methodsOutput) {
-            numPressed(binding.numberZero, binding.paradigm, "0")
-            numPressed(binding.numberOne, binding.paradigm, "1")
-            numPressed(binding.numberTwo, binding.paradigm, "2")
-            numPressed(binding.numberThree, binding.paradigm, "3")
-            numPressed(binding.numberFour, binding.paradigm, "4")
-            numPressed(binding.numberFive, binding.paradigm, "5")
-            numPressed(binding.numberSix, binding.paradigm, "6")
-            numPressed(binding.numberSeven, binding.paradigm, "7")
-            numPressed(binding.numberEight, binding.paradigm, "8")
-            numPressed(binding.numberNine, binding.paradigm, "9")
+        val numberIds = arrayOf(
+            binding.numberZero,
+            binding.numberOne,
+            binding.numberTwo,
+            binding.numberThree,
+            binding.numberFour,
+            binding.numberFive,
+            binding.numberSix,
+            binding.numberSeven,
+            binding.numberEight,
+            binding.numberNine,
+            binding.actionPlus,
+            binding.actionMinus,
+            binding.actionMultiplication,
+            binding.actionDivision,
+            binding.actionPerCent,
+            binding.actionSin,
+            binding.actionCos,
+            binding.deleteAll,
+            binding.deleteOne,
+            binding.coma,
+            binding.equal
+        )
 
-            coma(binding.coma, binding.paradigm)
-
-            actionPressed(binding.actionPlus, binding.paradigm, "+")
-            actionPressed(binding.actionMinus, binding.paradigm, "-")
-            actionPressed(binding.actionMultiplication, binding.paradigm, "*")
-            actionPressed(binding.actionDivision, binding.paradigm, "/")
-            actionPressed(binding.actionPerCent, binding.paradigm, "%")
-
-            sinCos(binding.actionSin, binding.paradigm, "sin (")
-            sinCos(binding.actionCos, binding.paradigm, "cos (")
-
-            deleteAll(binding.deleteAll, binding.paradigm)
-            deleteOne(binding.deleteOne, binding.paradigm)
-
-            equal(binding.equal, binding.paradigm, binding.history, binding.SCROLLERID)
+        for (index in 0 until numberIds.size) {
+            numberIds[index].setOnClickListener {
+                dataOutput.pressed(
+                    binding.paradigm, binding.history,
+                    binding.SCROLLERID, index,
+                )
+            }
         }
+
+        saveText.loadText(binding.history, requireActivity())
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveText.saveText(binding.history, requireActivity())
     }
 }

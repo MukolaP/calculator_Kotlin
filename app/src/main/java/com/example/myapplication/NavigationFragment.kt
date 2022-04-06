@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.calculator.presenter.save_text.SaveText
 import com.example.myapplication.databinding.FragmentNavigationBinding
 import com.example.myapplication.navigate.navigate
 
@@ -20,5 +21,6 @@ class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.navigateCalculator.setOnClickListener { navigate().goToCalculator() }
+
     }
 }

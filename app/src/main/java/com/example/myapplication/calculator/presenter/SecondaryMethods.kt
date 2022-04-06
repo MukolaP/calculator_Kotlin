@@ -2,33 +2,35 @@ package com.example.myapplication.calculator.presenter
 
 import android.annotation.SuppressLint
 import android.widget.TextView
+import com.example.myapplication.calculator.model.CalculatorModel
 
-open class SecondaryMethods : Controller.Base(), SecondaryMethodsInt {
+open class SecondaryMethods : Controller.Base(CalculatorModel()), SecondaryMethodsInt {
 
     override fun editText(string: String, text: TextView) {
-        this.string += string
-        text.text = this.string
+        calculatorModel.string += string
+        text.text = calculatorModel.string
     }
 
     override fun actionAudit(): Boolean {
-        return string.isNotEmpty() && action.isEmpty()
+        return calculatorModel.string.isNotEmpty() && calculatorModel.action.isEmpty()
     }
 
     override fun equalAudit(): Boolean {
-        return string.isNotEmpty() && action.isNotEmpty() &&
-                string.substring(string.length - 1) != action
+        return calculatorModel.string.isNotEmpty() && calculatorModel.action.isNotEmpty() &&
+                calculatorModel.string.substring(calculatorModel.string.length - 1) != calculatorModel.action
     }
 
-    override fun addTextView(string: String, history: TextView) {
-        if (action != "sin (" && action != "cos (") {
-            addTextView(history, " = ")
+    override fun addTextToHistory(string: String, history: TextView) {
+        if (calculatorModel.action != "sin (" && calculatorModel.action != "cos (") {
+            addTextToHistory(history, " = ")
         } else {
-            addTextView(history, ") ")
+            addTextToHistory(history, ") ")
         }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun addTextView(history: TextView, s: String) {
-        history.text = """${history.text}${string}${s + result()}""".trimIndent() + "\n"
+    private fun addTextToHistory(history: TextView, s: String) {
+        history.text =
+            """${history.text}${calculatorModel.string}${s + result()}""".trimIndent() + "\n"
     }
 }
